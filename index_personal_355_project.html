@@ -1,9 +1,14 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Student Portfolio Homepage 2026 -->
-    <!-- Created: October 2026 for SDC355-->
+    <!--
+        Author: Maria Anavisca
+        Date: 10/29/2026
+        Assignment: Personal Portfolio
+        Purpose: 
+    -->
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +36,6 @@
             padding: 30px 15px;
         }
 
-        /* Navigation menu */
         nav {
             background-color: #24558a;
             padding: 12px;
@@ -47,6 +51,13 @@
 
         nav a:hover {
             text-decoration: underline;
+        }
+
+        .dark-toggle {
+            display: block;
+            padding: 15px;
+            text-align: center;
+            background-color: #e4eaf2;
         }
 
         main {
@@ -81,7 +92,8 @@
             overflow: hidden;
         }
 
-        .project-card img {
+        .project-card img,
+        .featured-card img {
             width: 100%;
             height: 160px;
             object-fit: cover;
@@ -95,6 +107,39 @@
         .project-card a {
             color: #24558a;
             font-weight: bold;
+        }
+
+        /* Featured content styling */
+        .featured-card {
+            padding: 18px;
+            margin: 15px 0;
+            border: 2px solid #24558a;
+            border-radius: 8px;
+            background-color: #edf4fc;
+        }
+
+        .featured-card a {
+            color: #17365d;
+        }
+
+        .featured-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .featured-images a {
+            flex: 1 1 200px;
+        }
+
+        /* Dynamically added project message */
+        .dynamic-message {
+            background-color: #e4eef9;
+            color: #263238;
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 5px solid #24558a;
+            border-radius: 5px;
         }
 
         /* Contact form */
@@ -126,11 +171,68 @@
             background-color: #24558a;
         }
 
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        #formStatus {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
         footer {
             background-color: #17365d;
             color: white;
             text-align: center;
             padding: 15px;
+        }
+
+        /* Dark mode styling */
+        body.dark-mode {
+            background-color: #121212;
+            color: #f5f5f5;
+        }
+
+        body.dark-mode section {
+            background-color: #242424;
+            color: #f5f5f5;
+        }
+
+        body.dark-mode h2 {
+            color: #9ecbff;
+        }
+
+        body.dark-mode .dark-toggle {
+            background-color: #303030;
+            color: white;
+        }
+
+        body.dark-mode .featured-card {
+            background-color: #303b49;
+            border-color: #9ecbff;
+        }
+
+        body.dark-mode .featured-card a,
+        body.dark-mode .project-card a {
+            color: #9ecbff;
+        }
+
+        body.dark-mode .project-card {
+            border-color: #666;
+        }
+
+        body.dark-mode .dynamic-message {
+            background-color: #303b49;
+            color: white;
+            border-color: #9ecbff;
+        }
+
+        body.dark-mode input,
+        body.dark-mode textarea {
+            background-color: #303030;
+            color: white;
+            border-color: #777;
         }
 
         @media (max-width: 600px) {
@@ -144,39 +246,110 @@
 
 <body>
 
-    <!-- Welcome message updated with JavaScript -->
+    <!-- Welcome message -->
     <header>
         <h1>My Personal Portfolio</h1>
         <p id="welcomeMessage">Welcome to my portfolio!</p>
     </header>
 
-    <!-- Navigation links to the three page sections -->
+    <!-- Dark Mode checkbox -->
+    <div class="dark-toggle">
+        <label for="darkMode">
+            <input type="checkbox" id="darkMode" style="width: auto;">
+            Dark Mode
+        </label>
+    </div>
+
+    <!-- Navigation menu -->
     <nav>
         <a href="#about">About</a>
+        <a href="#featured">Featured Content</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
     </nav>
 
     <main>
+
         <!-- About section -->
         <section id="about">
             <h2>About Me</h2>
+
             <p>
                 Hello There! I am a student studying Information Technology
                 and Software Development at ECPI. I am learning how to create
-                websites, write code, and solve technical problems. 
+                websites, write code, and solve technical problems.
             </p>
+
             <p>
                 I enjoy learning new technologies and building projects
                 that help me improve my programming and web development
                 skills. This portfolio showcases some of my work and
                 what I am learning!
             </p>
+
+            <h3>My Skills and Technologies</h3>
+            <ul id="skillsList"></ul>
         </section>
 
-        <!-- Projects Section -->
+        <!-- Featured Content section -->
+        <section id="featured">
+            <h2>Featured Content</h2>
+
+            <!-- University Resources -->
+            <div id="universityResources" class="featured-card">
+                <h3>University Resources</h3>
+
+                <p>Helpful resources for my studies at ECPI University.</p>
+
+                <ul>
+                    <li>
+                        <a href="https://ecpi.instructure.com/"
+                           target="_blank" rel="noopener noreferrer">
+                            ECPI Canvas Student Portal
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://www.ecpi.edu/"
+                           target="_blank" rel="noopener noreferrer">
+                            ECPI University Website
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Personal Projects -->
+            <div id="personalProjects" class="featured-card">
+                <h3>Personal Projects</h3>
+
+                <p>Explore my programming and web development work.</p>
+
+                <div class="featured-images">
+
+                    <a href="https://github.com/marana6296"
+                       target="_blank" rel="noopener noreferrer">
+                        <img
+                            src="https://placehold.co/400x200/17365d/ffffff?text=Web+Development"
+                            alt="Web development project">
+                        <p>Web Development Project</p>
+                    </a>
+
+                    <a href="https://github.com/marana6296"
+                       target="_blank" rel="noopener noreferrer">
+                        <img
+                            src="https://placehold.co/400x200/24558a/ffffff?text=Python+Programming"
+                            alt="Python programming project">
+                        <p>Python Programming Project</p>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects section -->
         <section id="projects">
             <h2>My Projects</h2>
+
             <p>Here are three examples of projects in my portfolio.</p>
 
             <div class="projects">
@@ -185,12 +358,14 @@
                     <a href="https://github.com/marana6296"
                        target="_blank" rel="noopener noreferrer">
                         <img
-                            src=""
+                            src="https://placehold.co/600x300/17365d/ffffff?text=Web+Development"
                             alt="Web development project preview">
                     </a>
+
                     <div>
                         <h3>Web Development</h3>
                         <p>A website project demonstrating HTML and CSS skills.</p>
+
                         <a href="https://github.com/marana6296"
                            target="_blank" rel="noopener noreferrer">
                             View Project on GitHub
@@ -202,12 +377,14 @@
                     <a href="https://github.com/marana6296"
                        target="_blank" rel="noopener noreferrer">
                         <img
-                            src=""
+                            src="https://placehold.co/600x300/24558a/ffffff?text=Python+Programming"
                             alt="Python programming project preview">
                     </a>
+
                     <div>
                         <h3>Python Programming</h3>
                         <p>A programming project demonstrating Python skills.</p>
+
                         <a href="https://github.com/marana6296"
                            target="_blank" rel="noopener noreferrer">
                             View Project on GitHub
@@ -219,12 +396,14 @@
                     <a href="https://github.com/marana6296"
                        target="_blank" rel="noopener noreferrer">
                         <img
-                            src=""
+                            src="https://placehold.co/600x300/3973a8/ffffff?text=Data+Analytics"
                             alt="Data analytics project preview">
                     </a>
+
                     <div>
                         <h3>Data Analytics</h3>
                         <p>A data project demonstrating data analysis skills.</p>
+
                         <a href="https://github.com/marana6296"
                            target="_blank" rel="noopener noreferrer">
                             View Project on GitHub
@@ -238,9 +417,11 @@
         <!-- Contact section -->
         <section id="contact">
             <h2>Contact Me</h2>
+
             <p>Use the form below to send a message.</p>
 
             <form id="contactForm">
+
                 <label for="senderName">Sender Name:</label>
                 <input type="text" id="senderName" name="senderName"
                        placeholder="Enter your name" required>
@@ -257,11 +438,17 @@
                 <textarea id="message" name="message" rows="5"
                           placeholder="Write your message" required></textarea>
 
-                <button type="submit">Submit Message</button>
+                <button type="submit" id="submitButton">
+                    Submit Message
+                </button>
+
             </form>
 
-            <p id="formFeedback" aria-live="polite"></p>
+            <!-- JavaScript will update this message -->
+            <p id="formStatus" aria-live="polite"></p>
+
         </section>
+
     </main>
 
     <footer>
@@ -269,11 +456,12 @@
     </footer>
 
     <script>
-        // Ask the visitor for their name when the page loads.
+
+        // PART 1: Ask the visitor for their name.
         const visitorName = prompt("Welcome! What is your name?");
 
-        // Update the welcome message at the top of the page.
-        const welcomeMessage = document.getElementById("welcomeMessage");
+        const welcomeMessage =
+            document.getElementById("welcomeMessage");
 
         if (visitorName && visitorName.trim() !== "") {
             welcomeMessage.textContent =
@@ -283,20 +471,144 @@
                 "Welcome to my portfolio!";
         }
 
-        // Demonstrate contact form submission.
-        // This does not send an email to a real inbox.
-        const contactForm = document.getElementById("contactForm");
-        const formFeedback = document.getElementById("formFeedback");
+        // PART 2: Create an array of skills.
+        const skills = [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Python",
+            "Git",
+            "GitHub"
+        ];
+
+        // Use a for loop to add skills to the About section.
+        const skillsList = document.getElementById("skillsList");
+
+        for (let counter = 0; counter < skills.length; counter++) {
+            const listItem = document.createElement("li");
+
+            listItem.textContent = skills[counter];
+
+            skillsList.appendChild(listItem);
+        }
+
+        // PART 3: Use conditional logic to show Featured Content.
+        const projectCards =
+            document.querySelectorAll("#projects .project-card");
+
+        const universityResources =
+            document.getElementById("universityResources");
+
+        const personalProjects =
+            document.getElementById("personalProjects");
+
+        if (projectCards.length < 3) {
+            universityResources.style.display = "block";
+            personalProjects.style.display = "block";
+        } else {
+            universityResources.style.display = "none";
+            personalProjects.style.display = "block";
+        }
+
+        // PART 4: Dynamically add a new project message.
+        const projectsSection =
+            document.getElementById("projects");
+
+        const newProjectMessage =
+            document.createElement("p");
+
+        newProjectMessage.className = "dynamic-message";
+
+        newProjectMessage.textContent =
+            "Featured Project: I am continuing to develop my " +
+            "web development and programming skills through hands-on projects.";
+
+        projectsSection.appendChild(newProjectMessage);
+
+        // PART 5: Select and modify existing page elements.
+        const mainHeading = document.querySelector("header h1");
+
+        mainHeading.style.fontSize = "36px";
+
+        const aboutSection = document.getElementById("about");
+
+        aboutSection.style.borderTop = "5px solid #24558a";
+
+        // PART 6: Add a notification after a short delay.
+        setTimeout(function() {
+            const notification = document.createElement("p");
+
+            notification.textContent =
+                "Thanks for visiting Maria's portfolio!";
+
+            notification.style.textAlign = "center";
+            notification.style.padding = "10px";
+            notification.style.backgroundColor = "#dcecfb";
+            notification.style.color = "#17365d";
+
+            document.querySelector("header").appendChild(notification);
+        }, 2000);
+
+        // PART 7: Enable and disable Dark Mode.
+        const darkModeCheckbox =
+            document.getElementById("darkMode");
+
+        darkModeCheckbox.addEventListener("change", function() {
+
+            if (darkModeCheckbox.checked) {
+                document.body.classList.add("dark-mode");
+            } else {
+                document.body.classList.remove("dark-mode");
+            }
+
+        });
+
+        // PART 8: Display a timed confirmation for form submissions.
+        const contactForm =
+            document.getElementById("contactForm");
+
+        const submitButton =
+            document.getElementById("submitButton");
+
+        const formStatus =
+            document.getElementById("formStatus");
 
         contactForm.addEventListener("submit", function(event) {
+
+            // Prevent the page from refreshing.
             event.preventDefault();
 
-            formFeedback.textContent =
-                "Thank you! Your form passed validation. " +
-                "This demonstration does not send an actual email.";
+            // Check that all required form fields are valid.
+            if (!contactForm.checkValidity()) {
+                contactForm.reportValidity();
+                return;
+            }
 
-            contactForm.reset();
+            // Get the sender's name from the form.
+            const senderName =
+                document.getElementById("senderName").value.trim();
+
+            // Display a sending message.
+            formStatus.textContent = "Sending message...";
+
+            submitButton.disabled = true;
+
+            // Wait 2.5 seconds before displaying confirmation.
+            setTimeout(function() {
+
+                formStatus.textContent =
+                    "Thank you, " + senderName +
+                    "! Message sent successfully.";
+
+                submitButton.disabled = false;
+
+                // Clear the form after confirmation.
+                contactForm.reset();
+
+            }, 2500);
+
         });
+
     </script>
 
 </body>
