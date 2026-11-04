@@ -1,51 +1,46 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <!--
-        Author: Maria Anavisca
-        Date: 10/29/2026
         Assignment: Personal Portfolio
-        Purpose: 
+        Author: Maria Anavisca
+        Date: 11/03/2026
     -->
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Personal Portfolio</title>
+    <title>Maria's Personal Portfolio</title>
 
     <style>
-        /* General page styling */
-        * {
-            box-sizing: border-box;
-        }
-
+        /* General Page Styling */
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #263238;
-            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #222;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         header {
-            background-color: #17365d;
+            background-color: #1f3a5f;
             color: white;
             text-align: center;
-            padding: 30px 15px;
+            padding: 25px;
         }
 
         nav {
-            background-color: #24558a;
-            padding: 12px;
+            background-color: #345678;
             text-align: center;
+            padding: 12px;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 18px;
+            margin: 15px;
             font-weight: bold;
         }
 
@@ -53,192 +48,153 @@
             text-decoration: underline;
         }
 
-        .dark-toggle {
-            display: block;
-            padding: 15px;
-            text-align: center;
-            background-color: #e4eaf2;
-        }
-
-        main {
-            max-width: 1000px;
-            margin: auto;
-            padding: 20px;
-        }
-
         section {
-            background-color: white;
-            margin: 20px 0;
             padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px #00000012;
+            margin: 20px auto;
+            max-width: 1000px;
+            background-color: white;
+            border-radius: 8px;
         }
 
         h2 {
-            color: #17365d;
+            color: #1f3a5f;
         }
 
-        /* Project cards */
-        .projects {
+        .project-container {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
         }
 
         .project-card {
-            flex: 1 1 240px;
-            border: 1px solid #ddd;
+            flex: 1 1 250px;
+            border: 1px solid #ccc;
             border-radius: 8px;
-            overflow: hidden;
+            padding: 15px;
+            text-align: center;
         }
 
-        .project-card img,
-        .featured-card img {
+        .project-card img {
             width: 100%;
-            height: 160px;
+            max-width: 250px;
+            height: 150px;
             object-fit: cover;
-            display: block;
-        }
-
-        .project-card div {
-            padding: 15px;
-        }
-
-        .project-card a {
-            color: #24558a;
-            font-weight: bold;
-        }
-
-        /* Featured content styling */
-        .featured-card {
-            padding: 18px;
-            margin: 15px 0;
-            border: 2px solid #24558a;
-            border-radius: 8px;
-            background-color: #edf4fc;
-        }
-
-        .featured-card a {
-            color: #17365d;
-        }
-
-        .featured-images {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .featured-images a {
-            flex: 1 1 200px;
-        }
-
-        /* Dynamically added project message */
-        .dynamic-message {
-            background-color: #e4eef9;
-            color: #263238;
-            padding: 15px;
-            margin-top: 20px;
-            border-left: 5px solid #24558a;
             border-radius: 5px;
         }
 
-        /* Contact form */
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .project-card a {
+            color: #1f3a5f;
+            font-weight: bold;
         }
 
         input, textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #bbb;
-            border-radius: 5px;
-            font: inherit;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
         }
 
         button {
-            background-color: #17365d;
+            background-color: #1f3a5f;
             color: white;
+            padding: 10px 20px;
             border: none;
-            padding: 12px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
         }
 
         button:hover {
-            background-color: #24558a;
-        }
-
-        button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        #formStatus {
-            font-weight: bold;
-            margin-top: 15px;
+            background-color: #345678;
         }
 
         footer {
-            background-color: #17365d;
+            background-color: #1f3a5f;
             color: white;
             text-align: center;
             padding: 15px;
+            margin-top: 25px;
         }
 
-        /* Dark mode styling */
+        .dynamic-message {
+            background-color: #e8f0fa;
+            padding: 12px;
+            border-left: 4px solid #1f3a5f;
+            margin-top: 20px;
+        }
+
+        /* Dark Mode Styling */
         body.dark-mode {
-            background-color: #121212;
-            color: #f5f5f5;
+            background-color: #181818;
+            color: #f4f4f4;
         }
 
         body.dark-mode section {
-            background-color: #242424;
-            color: #f5f5f5;
+            background-color: #292929;
+            color: #f4f4f4;
         }
 
         body.dark-mode h2 {
-            color: #9ecbff;
-        }
-
-        body.dark-mode .dark-toggle {
-            background-color: #303030;
-            color: white;
-        }
-
-        body.dark-mode .featured-card {
-            background-color: #303b49;
-            border-color: #9ecbff;
-        }
-
-        body.dark-mode .featured-card a,
-        body.dark-mode .project-card a {
-            color: #9ecbff;
+            color: #8db9ed;
         }
 
         body.dark-mode .project-card {
-            border-color: #666;
+            border-color: #777;
+        }
+
+        body.dark-mode .project-card a {
+            color: #8db9ed;
         }
 
         body.dark-mode .dynamic-message {
-            background-color: #303b49;
-            color: white;
-            border-color: #9ecbff;
+            background-color: #333;
+            border-left-color: #8db9ed;
         }
 
         body.dark-mode input,
         body.dark-mode textarea {
-            background-color: #303030;
+            background-color: #444;
             color: white;
-            border-color: #777;
+            border: 1px solid #777;
         }
 
-        @media (max-width: 600px) {
+        /* Welcome Modal Styling */
+        .modal-overlay {
+            display: flex;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            color: #222;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content h2 {
+            color: #1f3a5f;
+        }
+
+        /* Responsive Layout */
+        @media screen and (max-width: 600px) {
             nav a {
-                display: inline-block;
-                margin: 5px 10px;
+                display: block;
+                margin: 10px;
+            }
+
+            .project-container {
+                flex-direction: column;
             }
         }
     </style>
@@ -246,21 +202,22 @@
 
 <body>
 
-    <!-- Welcome message -->
-    <header>
-        <h1>My Personal Portfolio</h1>
-        <p id="welcomeMessage">Welcome to my portfolio!</p>
-    </header>
-
-    <!-- Dark Mode checkbox -->
-    <div class="dark-toggle">
-        <label for="darkMode">
-            <input type="checkbox" id="darkMode" style="width: auto;">
-            Dark Mode
-        </label>
+    <!-- Welcome Modal -->
+    <div id="welcomeModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Welcome to My Portfolio!</h2>
+            <p>This page is a work in progress.</p>
+            <button type="button" id="closeModal">Close</button>
+        </div>
     </div>
 
-    <!-- Navigation menu -->
+    <!-- Header -->
+    <header>
+        <h1>Maria's Personal Portfolio</h1>
+        <p>Information Technology and Software Development Student</p>
+    </header>
+
+    <!-- Navigation -->
     <nav>
         <a href="#about">About</a>
         <a href="#featured">Featured Content</a>
@@ -268,13 +225,19 @@
         <a href="#contact">Contact</a>
     </nav>
 
-    <main>
+    <!-- Dark Mode Toggle -->
+    <section>
+        <label for="darkModeToggle">
+            <input type="checkbox" id="darkModeToggle" style="width: auto;">
+            Dark Mode
+        </label>
+    </section>
 
-        <!-- About section -->
-        <section id="about">
-            <h2>About Me</h2>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
 
-            <p>
+        <p>
                 Hello There! I am a student studying Information Technology
                 and Software Development at ECPI. I am learning how to create
                 websites, write code, and solve technical problems.
@@ -287,191 +250,123 @@
                 what I am learning!
             </p>
 
-            <h3>My Skills and Technologies</h3>
-            <ul id="skillsList"></ul>
-        </section>
+        <h3>My Skills</h3>
+        <ul id="skillsList"></ul>
+    </section>
 
-        <!-- Featured Content section -->
-        <section id="featured">
-            <h2>Featured Content</h2>
+    <!-- Featured Content Section -->
+    <section id="featured">
+        <h2>Featured Content</h2>
 
-            <!-- University Resources -->
-            <div id="universityResources" class="featured-card">
-                <h3>University Resources</h3>
+        <div id="universityResources">
+            <h3>University Resources</h3>
+            <p>
+                <a href="https://ecpi.instructure.com/" target="_blank">
+                    ECPI Canvas
+                </a>
+            </p>
+            <p>
+                <a href="https://www.ecpi.edu/" target="_blank">
+                    ECPI University
+                </a>
+            </p>
+        </div>
 
-                <p>Helpful resources for my studies at ECPI University.</p>
+        <div id="personalProjects">
+            <h3>Personal Projects</h3>
+            <p>Explore my projects and web development work below.</p>
+            <a href="https://github.com/marana6296" target="_blank">
+                Visit My GitHub Profile
+            </a>
+        </div>
+    </section>
 
-                <ul>
-                    <li>
-                        <a href="https://ecpi.instructure.com/"
-                           target="_blank" rel="noopener noreferrer">
-                            ECPI Canvas Student Portal
-                        </a>
-                    </li>
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>My Projects</h2>
 
-                    <li>
-                        <a href="https://www.ecpi.edu/"
-                           target="_blank" rel="noopener noreferrer">
-                            ECPI University Website
-                        </a>
-                    </li>
-                </ul>
+        <div class="project-container">
+
+            <div class="project-card">
+                <h3>HTML Project</h3>
+                <img
+                    src="https://placehold.co/250x150?text=HTML+Project"
+                    alt="HTML project preview">
+                <p>A project demonstrating HTML webpage development.</p>
+                <a href="https://github.com/marana6296" target="_blank">
+                    View Project
+                </a>
             </div>
 
-            <!-- Personal Projects -->
-            <div id="personalProjects" class="featured-card">
-                <h3>Personal Projects</h3>
-
-                <p>Explore my programming and web development work.</p>
-
-                <div class="featured-images">
-
-                    <a href="https://github.com/marana6296"
-                       target="_blank" rel="noopener noreferrer">
-                        <img
-                            src="https://placehold.co/400x200/17365d/ffffff?text=Web+Development"
-                            alt="Web development project">
-                        <p>Web Development Project</p>
-                    </a>
-
-                    <a href="https://github.com/marana6296"
-                       target="_blank" rel="noopener noreferrer">
-                        <img
-                            src="https://placehold.co/400x200/24558a/ffffff?text=Python+Programming"
-                            alt="Python programming project">
-                        <p>Python Programming Project</p>
-                    </a>
-
-                </div>
+            <div class="project-card">
+                <h3>JavaScript Project</h3>
+                <img
+                    src="https://placehold.co/250x150?text=JavaScript+Project"
+                    alt="JavaScript project preview">
+                <p>A project demonstrating JavaScript programming.</p>
+                <a href="https://github.com/marana6296" target="_blank">
+                    View Project
+                </a>
             </div>
-        </section>
 
-        <!-- Projects section -->
-        <section id="projects">
-            <h2>My Projects</h2>
-
-            <p>Here are three examples of projects in my portfolio.</p>
-
-            <div class="projects">
-
-                <article class="project-card">
-                    <a href="https://github.com/marana6296"
-                       target="_blank" rel="noopener noreferrer">
-                        <img
-                            src="https://placehold.co/600x300/17365d/ffffff?text=Web+Development"
-                            alt="Web development project preview">
-                    </a>
-
-                    <div>
-                        <h3>Web Development</h3>
-                        <p>A website project demonstrating HTML and CSS skills.</p>
-
-                        <a href="https://github.com/marana6296"
-                           target="_blank" rel="noopener noreferrer">
-                            View Project on GitHub
-                        </a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <a href="https://github.com/marana6296"
-                       target="_blank" rel="noopener noreferrer">
-                        <img
-                            src="https://placehold.co/600x300/24558a/ffffff?text=Python+Programming"
-                            alt="Python programming project preview">
-                    </a>
-
-                    <div>
-                        <h3>Python Programming</h3>
-                        <p>A programming project demonstrating Python skills.</p>
-
-                        <a href="https://github.com/marana6296"
-                           target="_blank" rel="noopener noreferrer">
-                            View Project on GitHub
-                        </a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <a href="https://github.com/marana6296"
-                       target="_blank" rel="noopener noreferrer">
-                        <img
-                            src="https://placehold.co/600x300/3973a8/ffffff?text=Data+Analytics"
-                            alt="Data analytics project preview">
-                    </a>
-
-                    <div>
-                        <h3>Data Analytics</h3>
-                        <p>A data project demonstrating data analysis skills.</p>
-
-                        <a href="https://github.com/marana6296"
-                           target="_blank" rel="noopener noreferrer">
-                            View Project on GitHub
-                        </a>
-                    </div>
-                </article>
-
+            <div class="project-card">
+                <h3>Python Project</h3>
+                <img
+                    src="https://placehold.co/250x150?text=Python+Project"
+                    alt="Python project preview">
+                <p>A project demonstrating Python programming.</p>
+                <a href="https://github.com/marana6296" target="_blank">
+                    View Project
+                </a>
             </div>
-        </section>
 
-        <!-- Contact section -->
-        <section id="contact">
-            <h2>Contact Me</h2>
+        </div>
+    </section>
 
-            <p>Use the form below to send a message.</p>
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
 
-            <form id="contactForm">
+        <form id="contactForm">
+            <label for="senderName">Name:</label>
+            <input type="text" id="senderName" required>
 
-                <label for="senderName">Sender Name:</label>
-                <input type="text" id="senderName" name="senderName"
-                       placeholder="Enter your name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
 
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email"
-                       placeholder="Enter your email address" required>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" required>
 
-                <label for="subject">Subject:</label>
-                <input type="text" id="subject" name="subject"
-                       placeholder="Enter the subject" required>
+            <label for="message">Message:</label>
+            <textarea id="message" rows="5" required></textarea>
 
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="5"
-                          placeholder="Write your message" required></textarea>
+            <button
+                type="submit"
+                id="submitButton"
+                title="Click to send your message!">
+                Submit
+            </button>
+        </form>
 
-                <button type="submit" id="submitButton">
-                    Submit Message
-                </button>
+        <p id="formStatus"></p>
+    </section>
 
-            </form>
-
-            <!-- JavaScript will update this message -->
-            <p id="formStatus" aria-live="polite"></p>
-
-        </section>
-
-    </main>
-
+    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Maria's Personal Portfolio</p>
+        <p>GitHub: marana6296</p>
     </footer>
 
     <script>
+        // Welcome Modal: Close the modal when the button is clicked.
+        const welcomeModal = document.getElementById("welcomeModal");
+        const closeModal = document.getElementById("closeModal");
 
-        // PART 1: Ask the visitor for their name.
-        const visitorName = prompt("Welcome! What is your name?");
+        closeModal.addEventListener("click", function() {
+            welcomeModal.style.display = "none";
+        });
 
-        const welcomeMessage =
-            document.getElementById("welcomeMessage");
-
-        if (visitorName && visitorName.trim() !== "") {
-            welcomeMessage.textContent =
-                "Welcome to my portfolio, " + visitorName.trim() + "!";
-        } else {
-            welcomeMessage.textContent =
-                "Welcome to my portfolio!";
-        }
-
-        // PART 2: Create an array of skills.
+        // Skills Array: Display each skill using a for loop.
         const skills = [
             "HTML",
             "CSS",
@@ -481,24 +376,18 @@
             "GitHub"
         ];
 
-        // Use a for loop to add skills to the About section.
         const skillsList = document.getElementById("skillsList");
 
         for (let counter = 0; counter < skills.length; counter++) {
             const listItem = document.createElement("li");
-
             listItem.textContent = skills[counter];
-
             skillsList.appendChild(listItem);
         }
 
-        // PART 3: Use conditional logic to show Featured Content.
-        const projectCards =
-            document.querySelectorAll("#projects .project-card");
-
+        // Featured Content: Show sections based on the number of projects.
+        const projectCards = document.querySelectorAll(".project-card");
         const universityResources =
             document.getElementById("universityResources");
-
         const personalProjects =
             document.getElementById("personalProjects");
 
@@ -510,105 +399,77 @@
             personalProjects.style.display = "block";
         }
 
-        // PART 4: Dynamically add a new project message.
-        const projectsSection =
-            document.getElementById("projects");
+        // DOM Manipulation: Add a new message to the Projects section.
+        const newProjectMessage = document.createElement("p");
 
-        const newProjectMessage =
-            document.createElement("p");
+        newProjectMessage.textContent =
+            "I am continuing to build my skills through new projects.";
 
         newProjectMessage.className = "dynamic-message";
 
-        newProjectMessage.textContent =
-            "Featured Project: I am continuing to develop my " +
-            "web development and programming skills through hands-on projects.";
+        document.getElementById("projects").appendChild(newProjectMessage);
 
-        projectsSection.appendChild(newProjectMessage);
-
-        // PART 5: Select and modify existing page elements.
-        const mainHeading = document.querySelector("header h1");
-
-        mainHeading.style.fontSize = "36px";
+        // DOM Manipulation: Modify two existing page elements.
+        const pageHeading = document.querySelector("header h1");
+        pageHeading.style.fontSize = "36px";
 
         const aboutSection = document.getElementById("about");
+        aboutSection.style.borderTop = "5px solid #345678";
 
-        aboutSection.style.borderTop = "5px solid #24558a";
+        // Dark Mode: Restore the saved preference from localStorage.
+        const darkModeToggle =
+            document.getElementById("darkModeToggle");
 
-        // PART 6: Add a notification after a short delay.
-        setTimeout(function() {
-            const notification = document.createElement("p");
+        const savedDarkMode = localStorage.getItem("darkMode");
 
-            notification.textContent =
-                "Thanks for visiting Maria's portfolio!";
+        if (savedDarkMode === "enabled") {
+            document.body.classList.add("dark-mode");
+            darkModeToggle.checked = true;
+        } else {
+            document.body.classList.remove("dark-mode");
+            darkModeToggle.checked = false;
+        }
 
-            notification.style.textAlign = "center";
-            notification.style.padding = "10px";
-            notification.style.backgroundColor = "#dcecfb";
-            notification.style.color = "#17365d";
-
-            document.querySelector("header").appendChild(notification);
-        }, 2000);
-
-        // PART 7: Enable and disable Dark Mode.
-        const darkModeCheckbox =
-            document.getElementById("darkMode");
-
-        darkModeCheckbox.addEventListener("change", function() {
-
-            if (darkModeCheckbox.checked) {
+        // Dark Mode: Save the user's preference when the checkbox changes.
+        darkModeToggle.addEventListener("change", function() {
+            if (darkModeToggle.checked) {
                 document.body.classList.add("dark-mode");
+                localStorage.setItem("darkMode", "enabled");
             } else {
                 document.body.classList.remove("dark-mode");
+                localStorage.setItem("darkMode", "disabled");
             }
-
         });
 
-        // PART 8: Display a timed confirmation for form submissions.
-        const contactForm =
-            document.getElementById("contactForm");
-
-        const submitButton =
-            document.getElementById("submitButton");
-
-        const formStatus =
-            document.getElementById("formStatus");
+        // Contact Form: Validate the form and display a delayed confirmation.
+        const contactForm = document.getElementById("contactForm");
+        const submitButton = document.getElementById("submitButton");
+        const formStatus = document.getElementById("formStatus");
 
         contactForm.addEventListener("submit", function(event) {
-
-            // Prevent the page from refreshing.
             event.preventDefault();
 
-            // Check that all required form fields are valid.
             if (!contactForm.checkValidity()) {
                 contactForm.reportValidity();
                 return;
             }
 
-            // Get the sender's name from the form.
             const senderName =
-                document.getElementById("senderName").value.trim();
+                document.getElementById("senderName").value;
 
-            // Display a sending message.
             formStatus.textContent = "Sending message...";
-
             submitButton.disabled = true;
 
-            // Wait 2.5 seconds before displaying confirmation.
+            // Wait 2.5 seconds before displaying the confirmation.
             setTimeout(function() {
-
                 formStatus.textContent =
                     "Thank you, " + senderName +
-                    "! Message sent successfully.";
+                    "! Your message was submitted successfully.";
 
                 submitButton.disabled = false;
-
-                // Clear the form after confirmation.
                 contactForm.reset();
-
             }, 2500);
-
         });
-
     </script>
 
 </body>
